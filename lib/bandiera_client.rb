@@ -5,8 +5,11 @@ module Bandiera
 
   @@port = '5000'
 
+  @@client = Client.new("http://#{@@host}:#{@@port}")
+
   def self.configure
     yield self
+    @@client = Client.new("http://#{@@host}:#{@@port}")
   end
 
   def self.host
@@ -26,8 +29,7 @@ module Bandiera
   end
 
   def self.on?(_feature, _group = "All", _params = {}, _http_options = {})
-    client = Client.new("http://#{@@host}:#{@@port}")
-    client.enabled?(_group, _feature, _params, _http_options)
+    @@client.enabled?(_group, _feature, _params, _http_options)
   end
 
 end
