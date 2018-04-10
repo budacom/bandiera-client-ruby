@@ -13,7 +13,57 @@ This client is compatible with the [v2 Bandiera API][bandiera-api].
 
 This client has been tested against the latest MRI and JRuby builds.
 
-# Usage
+# Simplified Usage
+
+Add the following to your `Gemfile`:
+
+```ruby
+gem 'bandiera-client'
+```
+
+Configure the host and port of Bandiera server in your initializer file.
+
+```ruby
+require 'bandiera_client'
+
+Bandiera.configure do |config|
+  config.host = "172.17.0.1"
+  config.port = 5000
+end
+
+```
+
+Then interact with a Bandiera server like so:
+
+```ruby
+require 'bandiera_client'
+
+if Bandiera.on?('show-new-search')
+  # show the new experimental search function
+end
+```
+
+You can specify a group name when calling the server if your features are not in the default group "All"
+
+```ruby
+require 'bandiera_client'
+
+if Bandiera.on?('show-new-search', 'my-group')
+  # show the new experimental search function
+end
+```
+
+You can also specify parameters to use more advanced Bandiera features like user percentages and user groups:
+
+```ruby
+require 'bandiera_client'
+
+if Bandiera.on?('show-new-search', 'my-group', { user_id: '1234567'})
+  # show the new experimental search function
+end
+```
+
+# Advanced Usage
 
 Add the following to your `Gemfile`:
 
