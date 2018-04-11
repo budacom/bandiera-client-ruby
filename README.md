@@ -29,6 +29,7 @@ require 'bandiera_client'
 Bandiera.configure do |config|
   config.host = "172.17.0.1"
   config.port = 5000
+  config.default_group = "default"
 end
 
 ```
@@ -43,7 +44,7 @@ if Bandiera.on?('show-new-search')
 end
 ```
 
-You can specify a group name when calling the server if your features are not in the default group "All"
+You can specify a group name when calling the server if your features are not in the default group
 
 ```ruby
 require 'bandiera_client'
