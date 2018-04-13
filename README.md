@@ -21,7 +21,7 @@ Add the following to your `Gemfile`:
 gem 'bandiera-client'
 ```
 
-Configure the host and port of Bandiera server in your initializer file.
+Configure the host and port of Bandiera server in your initializer file, and optionally a default_group name ("default" if not set) and logger (Logger if not set).
 
 ```ruby
 require 'bandiera_client'
@@ -29,7 +29,8 @@ require 'bandiera_client'
 Bandiera.configure do |config|
   config.host = "172.17.0.1"
   config.port = 5000
-  config.default_group = "default"
+  config.default_group = "All"
+  config.logger = Rails.logger
 end
 
 ```
