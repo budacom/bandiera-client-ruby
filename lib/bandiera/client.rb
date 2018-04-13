@@ -29,7 +29,7 @@ module Bandiera
       @base_uri    = base_uri
       @base_uri    << '/api' unless @base_uri.match(/\/api$/)
       @logger      = logger
-      @timeout     = 0.2 # 0.4s (0.2 + 0.2) default timeout
+      @timeout     = 1 # 0.4s (0.2 + 0.2) default timeout
       @client_name = client_name
     end
 
